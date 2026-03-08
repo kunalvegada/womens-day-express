@@ -22,20 +22,25 @@ body {
 
 /* --- THE MOVING TRAIN --- */
 .train-group {
-    position: absolute; 
-    bottom: 8px; /* Perfectly sits on the 20px track */
     display: flex; 
     flex-direction: row; 
     align-items: flex-end; 
-    flex-wrap: nowrap;
-    /* Default speed; JS will change this */
+    flex-wrap: nowrap; /* CRITICAL: Prevents the vertical stacking */
+    width: max-content; /* CRITICAL: Tells the browser the track is very wide */
+    
+    /* Animation settings */
     animation: drive 20s linear infinite;
+    position: relative; /* Change from absolute to relative for better flow */
+    bottom: 8px;
 }
 
+
 @keyframes drive {
-  from { transform: translateX(0); } /* Starts the engine on screen immediately */
-  to { transform: translateX(-100%); } /* Moves the whole group to the left */
+    from { transform: translateX(0); } /* Engine starts on screen */
+    to { transform: translateX(-50%); } /* Moves exactly one full train length */
 }
+
+
 
 
 /* --- THE ENGINE --- */
