@@ -43,16 +43,19 @@ body {
 
 
 /* --- THE MOVING TRAIN --- */
+/* --- 5. THE TRAIN GROUP (Final position) --- */
 .train-group {
     display: flex; 
     flex-direction: row; 
-    flex-wrap: nowrap !important; /* Forces a single straight line */
-    width: max-content; /* Allows the group to be 5000px wide if needed */
+    flex-wrap: nowrap;
+    width: max-content; 
     position: absolute;
     left: 0;
-    bottom: 0; 
+    bottom: 5px; /* Sits perfectly on the 25px track */
     animation: drive 20s linear infinite;
+    z-index: 10;
 }
+
 
 /* Infinite Loop: Moves exactly half because the train is doubled in JS */
 @keyframes drive {
