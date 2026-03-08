@@ -71,19 +71,19 @@ body {
 /* BIG ENGINE FIX */
 
 /* 2. FIX ENGINE OVERLAP */
+
+
 .engine-box {
     position: relative;
-    width: 140px; 
-    margin-right: 10px; /* CRITICAL: Adds a gap so it doesn't overlap the first carriage */
+    width: 150px; /* Increased slightly for the big engine */
+    margin-right: 25px; /* CRITICAL: Pushes the first carriage away so they don't touch */
     flex-shrink: 0;
     text-align: center;
 }
 
-
-
 .engine-emoji { 
-    font-size: 100px; 
-    line-height: 1;
+    font-size: 110px; /* Made the engine slightly larger than coaches */
+    line-height: 1; 
     display: block;
 }
 
