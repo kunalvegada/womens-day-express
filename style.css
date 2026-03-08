@@ -12,14 +12,15 @@ body {
 }
 
 /* --- THE TRACK AREA --- */
+/* 3. ENSURE THE TRACK IS CLEAR */
 .sky { 
     background: linear-gradient(#81ecec, #74b9ff); 
     height: 350px; 
     position: relative; 
     overflow: hidden;
-    border-bottom: 20px solid #333; 
+    border-bottom: 25px solid #333; /* Slightly thicker track */
     display: flex;
-    align-items: flex-end; /* Ensures train sits on the track */
+    align-items: flex-end;
 }
 
 /* --- THE MOVING TRAIN --- */
