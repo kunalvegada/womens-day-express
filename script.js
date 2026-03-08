@@ -129,40 +129,32 @@ function updateTrainSpeed(count) {
 
 
 // 5. THE GLOBAL LISTENER (Updates instantly for everyone)
-onSnapshot(query(carriagesCol, orderBy("timestamp", "asc")), (snapshot) => {
-    const data = snapshot.docs.map(doc => doc.data());
-    renderTrain(data); 
-});
+const q = query(carriagesCol, orderBy("timestamp", "asc"));
 
+onSnapshot(q, (snapshot) => {
+    const data = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+    }));
 
-
-const unit = document.createElement('div');
-unit.className = 'train-unit';
-unit.style.display = 'flex';
-unit.style.alignItems = 'flex-end'; // Snaps everyone to the bottom line
-
-// 1. Listen for data and update counter automatically
-db.collection("coaches").onSnapshot((snapshot) => {
-    let coaches = [];
-    snapshot.forEach((doc) => {
-        coaches.push({ id: doc.id, ...doc.data() });
-    });
-
-    // Update the counter text
+    // --- FIX 1: UPDATE THE COUNTER ---
     const countElement = document.getElementById('coach-count');
     if (countElement) {
-        countElement.innerText = coaches.length;
+        // This line fixes the "0" issue by showing the real count
+        countElement.innerText = data.length; 
         
-        // Add the "bump" effect when the number changes
+        // Add the visual bump effect
         countElement.classList.add('count-bump');
         setTimeout(() => countElement.classList.remove('count-bump'), 300);
     }
 
-    // Render the train with the fresh data
-    renderTrain(coaches);
+    // --- FIX 2: UPDATE SPEED & RENDER ---
+    renderTrain(data);
+    updateTrainSpeed(data.length);
+    
 }, (error) => {
     console.error("Firebase error:", error);
 });
 
-
+// Remove the old "db.collection" block at the bottom—it was causing the crash!
 
