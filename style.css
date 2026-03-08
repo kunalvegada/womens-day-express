@@ -61,7 +61,8 @@ body {
     animation: drive 20s linear infinite;
     z-index: 10;
 
-    bottom: -5px; /* Pushes the wheels DOWN to touch the black track line */
+    bottom: -1px; /* Pushes the wheels DOWN to touch the black track line */
+    
 }
 
 @keyframes drive {
