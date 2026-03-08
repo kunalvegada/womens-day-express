@@ -49,12 +49,17 @@ body {
 }
 
 /* BIG ENGINE FIX */
+
+/* 2. FIX ENGINE OVERLAP */
 .engine-box {
-    width: 130px !important; /* Fixed width */
-    flex-shrink: 0 !important; /* NEVER let the browser shrink the engine */
     position: relative;
+    width: 140px; 
+    margin-right: 10px; /* CRITICAL: Adds a gap so it doesn't overlap the first carriage */
+    flex-shrink: 0;
     text-align: center;
 }
+
+
 
 .engine-emoji { 
     font-size: 100px; 
