@@ -28,6 +28,20 @@ body {
     padding: 20px;
 }
 
+.sky h1, .sky h2, .sky div:first-child {
+    position: relative;
+    z-index: 50; /* Keeps text above the train */
+    margin: 0;
+    pointer-events: none; /* Allows clicking carriages through text if needed */
+}
+
+
+
+
+
+
+
+
 /* --- THE MOVING TRAIN --- */
 .train-group {
     display: flex; 
