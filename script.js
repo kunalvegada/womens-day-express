@@ -60,56 +60,41 @@ function renderTrain(data) {
     const container = document.getElementById('carriage-container');
     document.getElementById('coach-count').innerText = data.length;
     
-    // 1. Clear the old "wreckage"
-    container.innerHTML = '';
+    container.innerHTML = ''; // Clear the mess
 
-    // 2. This helper creates ONE full unit (Engine + Smoke + All Coaches)
-    const createTrainUnit = () => {
-        const unit = document.createElement('div');
-        unit.className = 'train-unit';
-        
-        // ADD THE ENGINE & SMOKE FIRST
-        let unitHTML = `
-            <div class="engine-box">
-                <div class="steam-box">
-                    <div class="steam s1">💨</div>
-                    <div class="steam s2">💨</div>
-                    <div class="steam s3">💨</div>
-                    <div class="steam s4">💨</div>
-                </div>
-                <div class="engine-emoji">🚂</div>
+    // 1. Create the HTML for ONE full train unit
+    const unitHTML = `
+        <div class="engine-box">
+            <div class="steam-box">
+                <div class="steam s1">💨</div><div class="steam s2">💨</div>
+                <div class="steam s3">💨</div><div class="steam s4">💨</div>
             </div>
-        `;
-        
-        // ADD THE COACHES
-        data.forEach((item, index) => {
-            unitHTML += `
-                <div class="carriage-box">
-                    <div class="tag-container">
-                        <div class="to-tag">To: ${item.to}</div>
-                        <div class="from-tag">By: ${item.from}</div>
-                    </div>
-                    <img src="${item.photo}" class="carriage-photo" onclick="openMsg(${index})">
-                    <div class="carriage-emoji">🚃</div>
+            <div class="engine-emoji">🚂</div>
+        </div>
+        ${data.map((item, index) => `
+            <div class="carriage-box">
+                <div class="tag-container">
+                    <div class="to-tag">To: ${item.to}</div>
+                    <div class="from-tag">By: ${item.from}</div>
                 </div>
-            `;
-        });
-        
-        unit.innerHTML = unitHTML;
-        return unit;
-    };
+                <img src="${item.photo}" class="carriage-photo" onclick="openMsg(${index})">
+                <div class="carriage-emoji">🚃</div>
+            </div>
+        `).join('')}
+    `;
 
-    // ➰ THE LOOP TRICK: Create the group and add the train TWICE
+    // 2. Wrap it in the group and duplicate it for the loop
     const trainGroup = document.createElement('div');
     trainGroup.className = 'train-group';
-    
-    trainGroup.appendChild(createTrainUnit()); // First 7 coaches
-    trainGroup.appendChild(createTrainUnit()); // Second 7 coaches (the loop)
+    trainGroup.innerHTML = `
+        <div class="train-unit">${unitHTML}</div>
+        <div class="train-unit">${unitHTML}</div>
+    `;
 
     container.appendChild(trainGroup);
-
     updateTrainSpeed(data.length);
 }
+
 
 
 
