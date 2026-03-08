@@ -126,19 +126,14 @@ window.closeMsg = function() {
 function updateTrainSpeed(count) {
     const train = document.querySelector('.train-group');
     if(!train) return;
-    if (count === 0) {
-    train.style.animationDuration = "25s"; // Matches your 4-coach speed!
-    return;
-    }
-  
-          // 12s base + 2.5s per coach = Perfect Reading Speed
-    let newSpeed = 12 + (count * 2.5); 
+
     
-    // Safety: Not too fast for 1 coach, not too slow for 20
-    if (newSpeed < 15) newSpeed = 15;
-    if (newSpeed > 45) newSpeed = 45;
+    // This is the "Goldilocks" speed: not too fast, not too slow
+    let newSpeed = 10 + (count * 2); 
+    
     train.style.animationDuration = newSpeed + "s";
 }
+
 
 // 5. THE GLOBAL LISTENER (Updates instantly for everyone)
 onSnapshot(query(carriagesCol, orderBy("timestamp", "asc")), (snapshot) => {
