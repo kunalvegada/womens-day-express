@@ -58,24 +58,43 @@ document.getElementById('submitBtn').onclick = function() {
 function renderTrain(data) {
     globalTrainData = data;
     const container = document.getElementById('carriage-container');
-    container.innerHTML = '';
     document.getElementById('coach-count').innerText = data.length;
     
-    data.forEach((item, index) => {
-        const carriage = document.createElement('div');
-        carriage.className = 'carriage-box';
-        carriage.innerHTML = `
-            <div class="tag-container">
-                <div class="to-tag">To: ${item.to}</div>
-                <div class="from-tag">By: ${item.from}</div>
-            </div>
-            <img src="${item.photo}" class="carriage-photo" onclick="openMsg(${index})">
-            <div class="carriage-emoji">🚃</div>
-        `;
-        container.appendChild(carriage);
-    });
+    // 1. Clear the container
+    container.innerHTML = '';
+
+    // 2. This helper function creates one full "Train Unit" (Engine + All Coaches)
+    const createTrainUnit = () => {
+        const unit = document.createElement('div');
+        unit.className = 'train-unit';
+        
+        // Add the Engine first
+        unit.innerHTML = `<div class="engine-box">🚂</div>`;
+        
+        // Add all the carriages from your Firebase data
+        data.forEach((item, index) => {
+            unit.innerHTML += `
+                <div class="carriage-box">
+                    <div class="tag-container">
+                        <div class="to-tag">To: ${item.to}</div>
+                        <div class="from-tag">By: ${item.from}</div>
+                    </div>
+                    <img src="${item.photo}" class="carriage-photo" onclick="openMsg(${index})">
+                    <div class="carriage-emoji">🚃</div>
+                </div>
+            `;
+        });
+        return unit;
+    };
+
+    // ➰ THE LOOP TRICK: We add the train TWICE.
+    // As the first one leaves, the second one is already entering!
+    container.appendChild(createTrainUnit());
+    container.appendChild(createTrainUnit());
+
     updateTrainSpeed(data.length);
 }
+
 
 // 4. POPUP & SPEED
 window.openMsg = function(index) {
