@@ -107,8 +107,13 @@ window.closeMsg = function() {
 function updateTrainSpeed(count) {
     const train = document.querySelector('.train-group');
     if(!train) return;
+    if (count === 0) {
+    train.style.animationDuration = "11s"; // Matches your 4-coach speed!
+    return;
+    }
+  
     let newSpeed =  3 + (count * (count/2)); 
-  if (newSpeed < 6) newSpeed = 6;
+  if (newSpeed < 8) newSpeed = 8;
     train.style.animationDuration = newSpeed + "s";
 }
 
