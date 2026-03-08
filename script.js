@@ -60,10 +60,11 @@ function renderTrain(data) {
     const container = document.getElementById('carriage-container');
     document.getElementById('coach-count').innerText = data.length;
     
-    container.innerHTML = ''; // Clear the mess
+    // Clear the mess
+    container.innerHTML = '';
 
-    // 1. Create the HTML for ONE full train unit
-    const unitHTML = `
+    // Create the HTML for ONE train (Engine + All Coaches)
+    const trainContent = `
         <div class="engine-box">
             <div class="steam-box">
                 <div class="steam s1">💨</div><div class="steam s2">💨</div>
@@ -83,17 +84,18 @@ function renderTrain(data) {
         `).join('')}
     `;
 
-    // 2. Wrap it in the group and duplicate it for the loop
+    // ➰ Inject into the group TWICE for a gap-less loop
     const trainGroup = document.createElement('div');
     trainGroup.className = 'train-group';
     trainGroup.innerHTML = `
-        <div class="train-unit">${unitHTML}</div>
-        <div class="train-unit">${unitHTML}</div>
+        <div class="train-unit">${trainContent}</div>
+        <div class="train-unit">${trainContent}</div>
     `;
 
     container.appendChild(trainGroup);
     updateTrainSpeed(data.length);
 }
+
 
 
 
