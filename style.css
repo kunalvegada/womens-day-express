@@ -77,10 +77,12 @@ body {
 .engine-box {
     position: relative;
     width: 150px; 
-    margin-right: 25px; /* Fixed: Stops engine from overlapping first carriage */
+    /* Increased margin to create a clear physical gap before the first coach */
+    margin-right: 35px; 
     flex-shrink: 0;
     text-align: center;
 }
+
 
 .engine-emoji { 
     font-size: 110px; 
