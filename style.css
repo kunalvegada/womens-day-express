@@ -44,12 +44,15 @@ body {
 }
 
 /* --- THE ENGINE --- */
+
 .engine-box {
-    position: relative; /* Needed for smoke placement */
-    width: 120px;
+    position: relative;
+    width: 140px; /* Gives the big engine space */
     text-align: center;
     flex-shrink: 0;
 }
+
+
 .engine-emoji { font-size: 100px; line-height: 1; }
 
 /* Wrapper for one set of Engine + Carriages */
