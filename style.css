@@ -74,8 +74,8 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap !important;
-    /* Forces the bottom of the engine and carriages to align on the same line */
-    align-items: flex-end; 
+    align-items: flex-end; /* Ensures every wheel sits on the same floor */
+    gap: 0; /* Forces zero pixels between units */
 }
 
 /* --- THE ENGINE --- */
