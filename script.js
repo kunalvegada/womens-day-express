@@ -58,45 +58,34 @@ document.getElementById('submitBtn').onclick = function() {
 function renderTrain(data) {
     globalTrainData = data;
     const container = document.getElementById('carriage-container');
-    document.getElementById('coach-count').innerText = data.length;
     
-    // Clear the mess
-    container.innerHTML = '';
-
-    // Create the HTML for ONE train (Engine + All Coaches)
-    const trainContent = `
-        <div class="engine-box">
-            <div class="steam-box">
-                <div class="steam s1">💨</div><div class="steam s2">💨</div>
-                <div class="steam s3">💨</div><div class="steam s4">💨</div>
-            </div>
-            <div class="engine-emoji">🚂</div>
-        </div>
-        ${data.map((item, index) => `
-            <div class="carriage-box">
-                <div class="tag-container">
-                    <div class="to-tag">To: ${item.to}</div>
-                    <div class="from-tag">By: ${item.from}</div>
+    // Create ONE train (Engine + All Coaches)
+    const trainHTML = `
+        <div class="train-unit">
+            <div class="engine-box">
+                <div class="banner">WOMEN'S EXPRESS 🌸</div>
+                <div class="steam-box">
+                    <div class="steam s1">💨</div><div class="steam s2">💨</div>
+                    <div class="steam s3">💨</div><div class="steam s4">💨</div>
                 </div>
-                <img src="${item.photo}" class="carriage-photo" onclick="openMsg(${index})">
-                <div class="carriage-emoji">🚃</div>
+                <div class="engine-emoji">🚂</div>
             </div>
-        `).join('')}
+            ${data.map((item, index) => `
+                <div class="carriage-box">
+                    <div class="tag-container">
+                        <div class="to-tag">To: ${item.to}</div>
+                        <div class="from-tag">By: ${item.from}</div>
+                    </div>
+                    <img src="${item.photo}" class="carriage-photo" onclick="openMsg(${index})">
+                    <div class="carriage-emoji">🚃</div>
+                </div>
+            `).join('')}
+        </div>
     `;
 
-    // ➰ Inject into the group TWICE for a gap-less loop
-    const trainGroup = document.createElement('div');
-    trainGroup.className = 'train-group';
-    trainGroup.innerHTML = `
-        <div class="train-unit">${trainContent}</div>
-        <div class="train-unit">${trainContent}</div>
-    `;
-
-    container.appendChild(trainGroup);
-    updateTrainSpeed(data.length);
+    // Put it TWICE for the infinite loop
+    container.innerHTML = `<div class="train-group">${trainHTML}${trainHTML}</div>`;
 }
-
-
 
 
 
