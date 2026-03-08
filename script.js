@@ -112,7 +112,7 @@ function updateTrainSpeed(count) {
     return;
     }
   
-      // 1. Get the screen width
+        // 1. Get the screen width
     let screenWidth = window.innerWidth;
     
     // 2. Estimate the total length of the train (Engine + Carriages)
