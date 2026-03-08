@@ -59,9 +59,12 @@ body {
 
 #carriage-container {
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: nowrap; /* Forces one single horizontal line */
+    width: max-content; /* Allows the track to be as long as needed */
+    align-items: flex-end;
+    padding-bottom: 20px;
 }
+
 
 .carriage-emoji { 
     font-size: 100px; 
