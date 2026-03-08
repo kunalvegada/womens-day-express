@@ -79,15 +79,22 @@ body {
 }
 
 /* --- THE ENGINE --- */
+
 .engine-box {
     position: relative;
-    width: 150px; 
-    /* Increased margin to create a clear physical gap before the first coach */
-    margin-right: 35px; 
+    /* 1. Keep the engine wide enough for the emoji and banner */
+    width: 140px; 
+    
+    /* 2. SNAP FIX: Set this to 0 to remove the gap between 🚂 and 🚃 */
+    margin-right: 0px; 
+    padding-right: 0px;
+
+    /* 3. Ensure it never gets squashed on small screens */
     flex-shrink: 0;
     text-align: center;
-    margin-right: 40px; /* Creates a clear space so the engine doesn't hit the first coach */
 }
+
+
 
 
 .engine-emoji { 
