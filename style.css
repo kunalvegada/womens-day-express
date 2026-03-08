@@ -26,8 +26,8 @@ body {
 .train-group {
     display: flex; 
     flex-direction: row; 
-    flex-wrap: nowrap; /* Prevents carriages from stacking vertically */
-    width: max-content; /* Allows the train to extend as long as needed */
+    flex-wrap: nowrap !important; /* Forces a single straight line */
+    width: max-content; /* Allows the group to be 5000px wide if needed */
     position: absolute;
     left: 0;
     bottom: 0; 
