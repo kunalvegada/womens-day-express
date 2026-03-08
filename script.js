@@ -107,7 +107,7 @@ window.closeMsg = function() {
 function updateTrainSpeed(count) {
     const train = document.querySelector('.train-group');
     if(!train) return;
-    let newSpeed = 20 - (count * 2);
+    let newSpeed = 25 - (count * 2);
   if (newSpeed < 5) newSpeed = 5;
     train.style.animationDuration = newSpeed + "s";
 }
