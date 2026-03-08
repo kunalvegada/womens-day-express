@@ -108,31 +108,16 @@ function updateTrainSpeed(count) {
     const train = document.querySelector('.train-group');
     if(!train) return;
     if (count === 0) {
-    train.style.animationDuration = "11s"; // Matches your 4-coach speed!
+    train.style.animationDuration = "25s"; // Matches your 4-coach speed!
     return;
     }
   
-        // 1. Get the screen width
-    let screenWidth = window.innerWidth;
+          // 12s base + 2.5s per coach = Perfect Reading Speed
+    let newSpeed = 12 + (count * 2.5); 
     
-    // 2. Estimate the total length of the train (Engine + Carriages)
-    // Each carriage is roughly 120px wide
-    let trainLength = 200 + (count * 120); 
-
-    // 3. Calculate total travel distance (Off-screen left to off-screen right)
-    let totalDistance = screenWidth + trainLength;
-
-    // 4. Set the SPEED (Pixels per second)
-    // 150 is a 'Swift Express' speed. Lower = Slower.
-    let pixelsPerSecond = 150; 
-
-    // 5. Calculate Time
-    let newSpeed = totalDistance / pixelsPerSecond;
-
-    // 6. Safety: Keep it between 6s and 15s for mobile energy
-    if (newSpeed < 6) newSpeed = 6;
-    if (newSpeed > 15) newSpeed = 15;
-  
+    // Safety: Not too fast for 1 coach, not too slow for 20
+    if (newSpeed < 15) newSpeed = 15;
+    if (newSpeed > 45) newSpeed = 45;
     train.style.animationDuration = newSpeed + "s";
 }
 
