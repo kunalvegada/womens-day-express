@@ -29,13 +29,14 @@ body {
     align-items: flex-end; 
     flex-wrap: nowrap;
     /* Default speed; JS will change this */
-    animation: move-left 20s linear infinite;
+    animation: drive 20s linear infinite;
 }
 
-@keyframes move-left {
-    from { transform: translateX(100vw); }
-    to { transform: translateX(-10000px); } 
+@keyframes drive {
+  from { transform: translateX(0); } /* Starts the engine on screen immediately */
+  to { transform: translateX(-100%); } /* Moves the whole group to the left */
 }
+
 
 /* --- THE ENGINE --- */
 .engine-unit {
