@@ -24,16 +24,15 @@ body {
 
 /* --- THE MOVING TRAIN --- */
 .train-group {
+.train-group {
     display: flex; 
     flex-direction: row; 
-    flex-wrap: nowrap; /* CRITICAL: Prevents vertical stacking */
-    width: max-content; /* CRITICAL: Allows track to be infinitely wide */
-    position: absolute; 
+    flex-wrap: nowrap; /* Forces one single line */
+    width: max-content; 
+    position: absolute;
     left: 0;
-    bottom: 8px; /* Sits perfectly on the track */
+    bottom: 0; /* Snaps it to the bottom of the sky */
     animation: drive 20s linear infinite;
-}
-
 /* Moving exactly half because we duplicated the train for the loop */
 @keyframes drive {
     from { transform: translateX(0); } 
