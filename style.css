@@ -46,6 +46,17 @@ body {
 }
 .engine-emoji { font-size: 100px; line-height: 1; }
 
+.train-unit {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+}
+
+
+
+
+
 /* --- THE CARRIAGE --- */
 .carriage-box { 
     position: relative; 
