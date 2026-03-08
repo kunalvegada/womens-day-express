@@ -129,7 +129,7 @@ function updateTrainSpeed(count) {
 
     
     // This is the "Goldilocks" speed: not too fast, not too slow
-    let newSpeed = 10 + (count * 2); 
+    let newSpeed = 3 + (count * 2); 
     
     train.style.animationDuration = newSpeed + "s";
 }
