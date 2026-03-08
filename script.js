@@ -112,8 +112,22 @@ function updateTrainSpeed(count) {
     return;
     }
   
-    let newSpeed = 1 + (count * (count/2)); 
-  if (newSpeed < 8) newSpeed = 8;
+      // 1. Calculate the distance
+    // window.innerWidth is the screen width
+    // (count * 150) is the approximate width of your carriages
+    let totalDistance = window.innerWidth + (count * 150);
+
+    // 2. Set a Constant Velocity (Pixels per second)
+    // 100 is "Medium", 150 is "Fast", 80 is "Slow/Grand"
+    let pixelsPerSecond = 100; 
+
+    // 3. Time = Distance / Speed
+    let newSpeed = totalDistance / pixelsPerSecond;
+
+    // 4. Instant Start
+    // We set a minimum so it's never a 'flash'
+    if (newSpeed < 6) newSpeed = 6;
+  
     train.style.animationDuration = newSpeed + "s";
 }
 
