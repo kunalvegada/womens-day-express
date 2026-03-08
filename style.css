@@ -53,12 +53,16 @@ body {
 .engine-emoji { font-size: 100px; line-height: 1; }
 
 /* Wrapper for one set of Engine + Carriages */
+
 .train-unit {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    align-items: flex-end;
+    align-items: flex-end; /* Keeps wheels on the ground */
 }
+
+
+
 
 /* --- THE CARRIAGE --- */
 .carriage-box { 
