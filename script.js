@@ -112,21 +112,26 @@ function updateTrainSpeed(count) {
     return;
     }
   
-      // 1. Calculate the distance
-    // window.innerWidth is the screen width
-    // (count * 150) is the approximate width of your carriages
-    let totalDistance = window.innerWidth + (count * 150);
+      // 1. Get the screen width
+    let screenWidth = window.innerWidth;
+    
+    // 2. Estimate the total length of the train (Engine + Carriages)
+    // Each carriage is roughly 120px wide
+    let trainLength = 200 + (count * 120); 
 
-    // 2. Set a Constant Velocity (Pixels per second)
-    // 100 is "Medium", 150 is "Fast", 80 is "Slow/Grand"
-    let pixelsPerSecond = 100; 
+    // 3. Calculate total travel distance (Off-screen left to off-screen right)
+    let totalDistance = screenWidth + trainLength;
 
-    // 3. Time = Distance / Speed
+    // 4. Set the SPEED (Pixels per second)
+    // 150 is a 'Swift Express' speed. Lower = Slower.
+    let pixelsPerSecond = 150; 
+
+    // 5. Calculate Time
     let newSpeed = totalDistance / pixelsPerSecond;
 
-    // 4. Instant Start
-    // We set a minimum so it's never a 'flash'
+    // 6. Safety: Keep it between 6s and 15s for mobile energy
     if (newSpeed < 6) newSpeed = 6;
+    if (newSpeed > 15) newSpeed = 15;
   
     train.style.animationDuration = newSpeed + "s";
 }
