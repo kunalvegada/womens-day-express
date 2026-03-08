@@ -24,7 +24,6 @@ body {
 
 /* --- THE MOVING TRAIN --- */
 .train-group {
-.train-group {
     display: flex; 
     flex-direction: row; 
     flex-wrap: nowrap; /* Forces one single line */
@@ -33,6 +32,11 @@ body {
     left: 0;
     bottom: 0; /* Snaps it to the bottom of the sky */
     animation: drive 20s linear infinite;
+}
+
+
+
+    
 /* Moving exactly half because we duplicated the train for the loop */
 @keyframes drive {
     from { transform: translateX(0); } 
