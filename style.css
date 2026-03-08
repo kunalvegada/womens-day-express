@@ -70,7 +70,8 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap !important;
-    align-items: flex-end;
+    /* Forces the bottom of the engine and carriages to align on the same line */
+    align-items: flex-end; 
 }
 
 /* --- THE ENGINE --- */
