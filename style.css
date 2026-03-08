@@ -40,27 +40,35 @@ body {
     to { transform: translateX(-50%); } 
 }
 
-/* --- THE ENGINE --- */
+/* One set: Engine + 7 Coaches */
+.train-unit {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap !important;
+    align-items: flex-end;
+}
+
+/* BIG ENGINE FIX */
 .engine-box {
+    width: 130px !important; /* Fixed width */
+    flex-shrink: 0 !important; /* NEVER let the browser shrink the engine */
     position: relative;
-    width: 140px; /* Specific width to prevent engine from shrinking */
     text-align: center;
-    flex-shrink: 0;
 }
 
 .engine-emoji { 
     font-size: 100px; 
-    line-height: 1; 
+    line-height: 1;
     display: block;
 }
 
-/* Wrapper for one set of Engine + Carriages */
-.train-unit {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: flex-end; /* Keeps wheels flat on the ground */
-}
+
+
+
+
+
+
+
 
 /* --- THE CARRIAGES --- */
 .carriage-box { 
