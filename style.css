@@ -56,7 +56,8 @@ body {
     width: max-content; 
     position: absolute;
     left: 0;
-    bottom: 5px; 
+    /* Adjusted bottom value to sit the wheels directly on the dark track line */
+    bottom: 2px; 
     animation: drive 20s linear infinite;
     z-index: 10;
 }
