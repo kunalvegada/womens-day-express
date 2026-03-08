@@ -144,3 +144,11 @@ onSnapshot(query(carriagesCol, orderBy("timestamp", "asc")), (snapshot) => {
     const data = snapshot.docs.map(doc => doc.data());
     renderTrain(data); 
 });
+
+
+
+const unit = document.createElement('div');
+unit.className = 'train-unit';
+unit.style.display = 'flex';
+unit.style.alignItems = 'flex-end'; // Snaps everyone to the bottom line
+
