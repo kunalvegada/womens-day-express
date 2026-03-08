@@ -112,7 +112,7 @@ function updateTrainSpeed(count) {
     return;
     }
   
-    let newSpeed =  3 + (count * (count/2)); 
+    let newSpeed = 1 + (count * (count/2)); 
   if (newSpeed < 8) newSpeed = 8;
     train.style.animationDuration = newSpeed + "s";
 }
