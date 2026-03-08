@@ -141,3 +141,28 @@ unit.className = 'train-unit';
 unit.style.display = 'flex';
 unit.style.alignItems = 'flex-end'; // Snaps everyone to the bottom line
 
+// 1. Listen for data and update counter automatically
+db.collection("coaches").onSnapshot((snapshot) => {
+    let coaches = [];
+    snapshot.forEach((doc) => {
+        coaches.push({ id: doc.id, ...doc.data() });
+    });
+
+    // Update the counter text
+    const countElement = document.getElementById('coach-count');
+    if (countElement) {
+        countElement.innerText = coaches.length;
+        
+        // Add the "bump" effect when the number changes
+        countElement.classList.add('count-bump');
+        setTimeout(() => countElement.classList.remove('count-bump'), 300);
+    }
+
+    // Render the train with the fresh data
+    renderTrain(coaches);
+}, (error) => {
+    console.error("Firebase error:", error);
+});
+
+
+
