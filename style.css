@@ -257,3 +257,13 @@ body.modal-open .sky { filter: blur(4px); transition: filter 0.3s; }
 }
 
 .count-bump { transform: scale(1.3); transition: transform 0.3s ease; }
+
+
+.main-title, .banner {
+    pointer-events: none; /* This makes clicks "pass through" the text to the photos below */
+}
+.carriage-photo {
+    pointer-events: auto; /* Ensures the photo remains clickable */
+    z-index: 100; /* Puts the photo at the very front */
+}
+
