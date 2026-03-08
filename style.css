@@ -129,6 +129,18 @@ body {
     pointer-events: auto; /* Forces clickability */
 }
 
+.banner {
+    /* Keeps the banner floating nicely above the engine */
+    font-size: 12px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: -10px; 
+    position: relative;
+    z-index: 60;
+}
+
+
+
 /* --- LABELS --- */
 .tag-container {
     display: flex;
